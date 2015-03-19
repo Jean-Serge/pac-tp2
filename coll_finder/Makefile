@@ -1,7 +1,7 @@
 .PHONY: clean
 
-coll_finder: lib/libcoll.a md5.o main.o
-	g++ $^ -o $@ 
+coll_finder: md5.o main.o
+	g++ $^ -o $@ -Llib -lcoll
 
 lib/libcoll.a:
 	cd lib && $(MAKE)

@@ -9,50 +9,23 @@ from client import *
 # ----------------------------------------------------------------------------
 # 
 # -------------------------
-NOM = "monbailly"
-PREFIXE = "prefixe"
 OUTPUT1 = "out1"
 OUTPUT2 = "out2"
-SUFFIXE = "PAC POWAAAAAAAAAAA"
-
-os.system("echo -n " + NOM + " > " + PREFIXE)
-os.system("dd if=/dev/urandom bs=" + str(512 - len(NOM)) + " count=1 >> prefixe")
-
-os.system("./coll_finder.bin " + PREFIXE + " " + OUTPUT1 + " " + OUTPUT2)
-os.system("echo -n " + SUFFIXE + " >> " + OUTPUT1)
-os.system("echo -n " + SUFFIXE + " >> " + OUTPUT2)
-
-# os.system("cat " + PREFIXE + " " + OUTPUT1 + " | md5sum")
-# os.system("cat " + PREFIXE + " " + OUTPUT2 + " | md5sum")
 
 URL = 'http://pac.bouillaguet.info/TP2/md5-collisions/'
 server = Server(URL)
 
-# os.system("cat " + OUTPUT1 + " | base64 > out64_1 ")
-# os.system("cat " + OUTPUT2 + " | base64 > out64_2 ")
-
-os.system("cat " + PREFIXE + " out64_1 | md5sum")
-os.system("cat " + PREFIXE + " out64_2 | md5sum")
-
-file = open("out64_1", 'r')
-msg1 = file.read()
-# print(msg1)
-
-file = open("out64_2", 'r')
-msg2 = file.read()
-# print(msg2)
-
-# file = open(OUTPUT1, 'r')
+# file = open('msg1', 'r')
 # msg1 = file.read()
-# file = open(OUTPUT2, 'r')
+# file = open('msg2', 'r')
 # msg2 = file.read()
 # file.close()
+msg1 = '6d6f6e6261696c6c79c2d100d0b0863bb032b27f73a506df4b697b92725e3075a17db22a57b2af9dac5d1aec1fb237a06a5b587dd8191b8211aa21fc162cd49d1ba26d37ef75d6cffb8d0411031fc48c506c28ac4521b250a613539544ac6cf2f23160fc8b9612683c164475a5fbc162c683a803ffd0ecdea8db1dded0ee562d8ab729bf0642f5bff92cab0a4521129ec1883ed65a50af78582c573e52b1bc6d00a06ef08222c7bf838c98c4e90a0f6b717116fbac3c03aebc716ce49fce20183d004112961cea9a56a4f90d15bd3ea9c061e637f98774ff79f633128d9af2204b878ba0dc58a26c0ed739deedca4f74b65e926820aa46d66d434732306a26e572d42ba27eeb6d83067897e982a4359cac275fd073be724dad70ad03d7bef22abf2e3217105a64da82b3082555fec8639f3819bcabab081476b3535120a6dca018edc715b3217f16813cd64c5419d3fe53b98c8e46cb64542cf4903363f3de5c3faa3049f4547b5832bf237626e08343697b5dd25959890f64b34fd16e3a0cee2f1173d131007505dfbc11a49e5c3aec7c8df89cdaaffd989390ea947c1f7a0117cbe161862a3c420f5ae6c524db7f2a93111c2a4aa52b5a2706c2452a222b54fd837c9484cf8239102dd298e3516ff213e945f5fecd341ae8c3c41eda4a19551298986d737c35298954280473d69a0e6d9b61f3d5974bfeca0d0a91fec1fcd09417ed6f63ba39834b14fe526363454d40df5576640ecb17425a804e6eb2abc6310cf3cfc844630fcb3f5c5c1ef8904d0469f9f2bb7f06672ecf50a2dda7b463ce764ad1acf5498be10ec27b89af9d596089acea077bc020d59bf5cc506a5db2b1665fda282a8ff499a3acef74896246dab1a877f6161bdae1551d7ec8d427fa50414320504f574141414141414141414141'
 
-# print(msg1)
-# print(msg2)
+msg2 = '6d6f6e6261696c6c79c2d100d0b0863bb032b27f73a506df4b697b92725e3075a17db22a57b2af9dac5d1aec1fb237a06a5b587dd8191b8211aa21fc162cd49d1ba26d37ef75d6cffb8d0411031fc48c506c28ac4521b250a613539544ac6cf2f23160fc8b9612683c164475a5fbc162c683a803ffd0ecdea8db1dded0ee562d8ab729bf0642f5bff92cab0a4521129ec1883ed65a50af78582c573e52b1bc6d00a06ef08222c7bf838c98c4e90a0f6b717116fbac3c03aebc716ce49fce20183d004112961cea9a56a4f90d15bd3ea9c061e637f98774ff79f633128d9af2204b878ba0dc58a26c0ed739deedca4f74b65e926820aa46d66d434732306a26e572d42ba27eeb6d83067897e982a4359cac275fd073be724dad70ad03d7bef22abf2e3217105a64da82b3082555fec8639f3819bcabab081476b3535120a6dca018edc715b3217f16813cd64c5419d3fe53b98c8e46cb64542cf4903363f3de5c3faa3049f4547b5832bf237626e08343697b5dd25959890f64b34fd16e3a0cee2f1173d131007505dfbc11a49e5c3aec7c8df89cdaaffd989390ea947c1f7a0117cbe161862a3c420f5ae6c524db7f2a93111c2a4aa52b5a2706c2452a222b54fd837c9484cf8239102dd298e3516ff213e945f5fecd341ae8c3c41eda4a19551298986d737c35298954280473d69a0e6d9b61f3d5974bfeca0d0a91fec1fcd09417ed6f63ba39834b14fe526363454d40df55f6640ecb17425a804e6eb2abc6310cf3cfc844630fcb3f5c5c1e78914d0469f9f2bb7f06672ecf5022dda7b463ce764ad1acf5498be10ec27b89af9d596089ac6a077bc020d59bf5cc506a5db2b1665fda282a8ff499a3acef74096246dab1a877f6161bdae1551dfec8d427fa50414320504f574141414141414141414141'
 
-# dic = {0:str(base64.b16encode(msg1.encode())), 1:str(base64.b16encode(msg2.encode()))}
-# print(dic)
+dic = {0:msg1, 1:msg2}
 
+response = server.query('checker/monbailly', dic)
+print(response)
 
-# response = server.query('checker/monbailly', dic)
